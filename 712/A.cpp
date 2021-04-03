@@ -43,22 +43,22 @@ template <typename T>
 using ordered_multiset = tree<T, null_type, less_equal<T>, rb_tree_tag, tree_order_statistics_node_update>;
 
 struct h_llint {
-  static uint64_t splitmix64(uint64_t x) {    // http://xorshift.di.unimi.it/splitmix64.c
-    x += 0x9e3779b97f4a7c15;
-    x = (x ^ (x >> 30)) * 0xbf58476d1ce4e5b9;
-    x = (x ^ (x >> 27)) * 0x94d049bb133111eb;
-    return x ^ (x >> 31);
-  }
-  size_t operator()(uint64_t x) const {
-    static const uint64_t FIXED_RANDOM = chrono::steady_clock::now().time_since_epoch().count();
-    return splitmix64(x + FIXED_RANDOM);
-  }
+    static uint64_t splitmix64(uint64_t x) {    // http://xorshift.di.unimi.it/splitmix64.c
+        x += 0x9e3779b97f4a7c15;
+        x = (x ^ (x >> 30)) * 0xbf58476d1ce4e5b9;
+        x = (x ^ (x >> 27)) * 0x94d049bb133111eb;
+        return x ^ (x >> 31);
+    }
+    size_t operator()(uint64_t x) const {
+        static const uint64_t FIXED_RANDOM = chrono::steady_clock::now().time_since_epoch().count();
+        return splitmix64(x + FIXED_RANDOM);
+}
 };
 
 struct h_pair{
-  size_t operator()(const PLL&x)const{
-    return hash<ll>()(((ll)x.ff)^(((ll)x.ss)<<32));
-  }
+    size_t operator()(const PLL&x)const{
+        return hash<ll>()(((ll)x.ff)^(((ll)x.ss)<<32));
+    }
 };
 
 typedef map<ll, ll> MLL;
@@ -77,62 +77,64 @@ typedef unordered_map<ll, ll, h_llint> UMLL;
 typedef unordered_map<PLL, int, h_pair> UMPI;
 typedef unordered_map<PLL, ll, h_pair> UMPL;
 
-int ar[MV], lcp[MV];
+int ar[MV];
 ll arr[MV];
 
 void solve(int T)
 {
-	int n;
-	cin>>n;
-	string s;
-	cin>>s;
-	ll tt = 0;
-	for(int i=1;i<n;i++)
-	{
-		int j = lcp[i-1];
-		while(j && (s[i] != s[j]))
-		j = lcp[j-1];
-		if(s[i] == s[j])
-		j++;
-		lcp[i] = j;
-	}
-	for(int i=0;i<n;i++)
-	{
-		int j = i;
-		while(j && lcp[j])
-		{
-			tt++;
-			j = lcp[j]-1;
-		}
-	}
-	tt += n;
-	cout<<tt<<"\n";
-	return;
+    string s;
+    cin>>s;
+    int cl = sz(s), cr = -1;
+    for(int i=0;i<sz(s);i++)
+    {
+        if(s[i] != 'a')
+        {
+            cl = i;
+            break;
+        }
+    }
+    for(int i=sz(s)-1;i>=0;i--)
+    {
+        if(s[i] != 'a')
+        {
+            cr = i;
+            break;
+        }
+    }
+    if(cr < cl)
+    cout<<"NO\n";
+    else
+    {
+        if(cl > (sz(s)-1-cr))
+        cout<<"YES\n"<<('a' + s)<<"\n";
+        else cout<<"YES\n"<<(s + 'a')<<"\n";
+    }
+    return;
 }
 
 int main(void)
 {
-	FLASH();
-	//freopen("cowjog.in", "r", stdin);
-	//freopen("cowjog.out", "w", stdout);
-	int T;
-	T = 1;
+    FLASH();
+    //freopen("cowjog.in", "r", stdin);
+    //freopen("cowjog.out", "w", stdout);
+    int T;
+    T = 1;
 
 #ifndef ONLINE_JUDGE
-	time_t time_t1, time_t2;
-	time_t1 = clock();
+    time_t time_t1, time_t2;
+    time_t1 = clock();
 #endif
 
-	cin>>T;
-	while(T--)
-	solve(T);
+    cin>>T;
+    while(T--)
+    solve(T);
 
 #ifndef ONLINE_JUDGE
-	time_t2 = clock();
-	SETF();
-	cerr<<"Time taken: "<<setprecision(7)<<(time_t2 - time_t1)/(double)CLOCKS_PER_SEC<<"\n";
-	UNSETF();
+    time_t2 = clock();
+    SETF();
+    cerr<<"Time taken: "<<setprecision(7)<<(time_t2 - time_t1)/(double)CLOCKS_PER_SEC<<"\n";
+    UNSETF();
 #endif
 
-	return 0;
+    return 0;
 }
