@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1482480305 source:c:\users\dell\desktop\c++\test\test.cpp
+	<iostream>
+	<cstdlib>
+

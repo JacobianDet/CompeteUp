@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1485330595 source:c:\users\dell\desktop\c++\precision\precision.cpp
+	<iostream>
+	<cstdlib>
+	<iomanip>
+	<string>
+

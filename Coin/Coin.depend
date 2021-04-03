@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1501155191 source:c:\users\dell\desktop\c++\coin\coin.cpp
+	<iostream>
+	<vector>
+

@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1488255989 source:c:\users\dell\desktop\c++\quicksort\qs.cpp
+	<iostream>
+	<cstdlib>
+

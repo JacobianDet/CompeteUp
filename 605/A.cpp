@@ -1,0 +1,85 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define MOD 1000000007
+#define INF (1LL<<57)
+#define MV 200001
+#define LMV 21
+#define ff first
+#define ss second
+#define pb push_back
+#define eb emplace_back
+#define emp emplace
+#define whoami(x) cerr<<#x<<" "<<x<<"\n";
+#define mp make_pair
+#define ins insert
+#define sz size
+
+void FLASH() {ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);}
+void SETF() {cout.ios_base::setf(ios_base::fixed);}
+void UNSETF() {cout.ios_base::unsetf(ios_base::fixed);}
+
+typedef long long ll;
+typedef long double ld;
+typedef vector<int> VI;
+typedef vector<ll> VL;
+typedef pair<int, int> PII;
+typedef pair<ll, ll> PLL;
+typedef pair<PII, int> PPII;
+typedef pair<PLL, ll> PPLL;
+typedef map<int, int> MII;
+typedef map<ll, ll> MLL;
+typedef map<PII, int> MPII;
+typedef map<PLL, ll> MPLL;
+typedef set<int> SI;
+typedef set<ll> SL;
+
+int ar[MV];
+ll arr[MV];
+int NE[3] = {-1, 0, 1};
+
+void solve(int T)
+{
+	int a,b,c;
+	cin>>a>>b>>c;
+	ll md = INF;
+	for(int i=0;i<3;i++)
+	{
+		for(int j=0;j<3;j++)
+		{
+			for(int k=0;k<3;k++)
+			{
+				int ad = a + NE[i];
+				int bd = b + NE[j];
+				int cd = c + NE[k];
+				ll sd = 1LL*abs(ad - bd) + abs(bd - cd) + abs(cd - ad);
+				md = min(md, sd);  
+			}	
+		}
+	}
+	cout<<md<<"\n";
+	return;
+}
+
+int main(void)
+{
+	FLASH();
+	int T;
+	cin>>T;
+
+#ifndef ONLINE_JUDGE
+	time_t time_t1, time_t2;
+	time_t1 = clock();
+#endif
+
+	while(T--)
+	solve(T);
+
+#ifndef ONLINE_JUDGE
+	time_t2 = clock();
+	SETF();
+	cout<<"Time taken: "<<setprecision(7)<<(time_t2 - time_t1)/(double)CLOCKS_PER_SEC<<"\n";
+	UNSETF();
+#endif
+
+	return 0;
+}
