@@ -1,0 +1,30 @@
+# depslib dependency file v1.0
+1482399978 source:c:\users\dell\desktop\c++\number game\arm.cpp
+	<iostream>
+	<cstdlib>
+	<cmath>
+
+1482338483 source:c:\users\dell\desktop\c++\number game\pall.cpp
+	<iostream>
+	<cstdlib>
+	<cmath>
+
+1482337460 source:c:\users\dell\desktop\c++\number game\perf.cpp
+	<iostream>
+	<cstdlib>
+	<cmath>
+
+1482338108 source:c:\users\dell\desktop\c++\number game\number.cpp
+	<iostream>
+	<cstdlib>
+	<cstring>
+	"arm.h"
+	"pall.h"
+	"perf.h"
+
+1482337460 c:\users\dell\desktop\c++\number game\arm.h
+
+1482337460 c:\users\dell\desktop\c++\number game\pall.h
+
+1482337460 c:\users\dell\desktop\c++\number game\perf.h
+

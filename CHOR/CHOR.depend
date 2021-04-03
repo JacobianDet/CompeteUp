@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1503495665 source:c:\users\dell\desktop\c++\chor\main.cpp
+	<iostream>
+	<vector>
+	<string>
+
